@@ -1,10 +1,7 @@
-//import java.util.Random;
-
 public class ScrollArtV1 {
     static final int BOAT_WIDTH = 34;
     static final int BOAT_HEIGHT = 10;
     static final int WIDTH = getTerminalWidth() - BOAT_WIDTH;
-    //static final Random rand = new Random();
 
    
 public static void main(String[] args) throws InterruptedException {
