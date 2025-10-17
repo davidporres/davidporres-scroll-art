@@ -187,20 +187,6 @@ public static void main(String[] args) throws InterruptedException {
         return img;
     }
 
-   /*  static char[][] getCarrot() {
-        char[][] img = new char[BOAT_HEIGHT][BOAT_WIDTH];
-        // fill with empty space
-        for (int y = 0; y < BOAT_HEIGHT; y++) {
-            for (int x = 0; x < BOAT_WIDTH; x++) {
-                img[y][x] = ' ';
-            }
-        }
-        // then fill individual characters
-        
-
-        return img;
-    }*/
-
     public static int getTerminalWidth() {
         String os = System.getProperty("os.name").toLowerCase();
 
