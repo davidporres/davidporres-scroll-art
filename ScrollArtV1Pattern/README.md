@@ -1,37 +1,17 @@
 # scroll-art
 
-## 1. Triangle Hall
+## 1. Hashtag-Snake
 
-`ScrollArtV1Pattern.java` is a program that prints straight lines moving either left or right. 
-Then a new line, at random intervals, branches off an existing line in the opposite direction. 
-It creates a pattern that looks like a bunch of triangles. I was inspired by watching Al Sweigart's Scroll Art video [here](https://www.youtube.com/watch?v=Sjk4UMpJqVs&embeds_referring_euri=https%3A%2F%2Fscrollart.org%2F&source_ve_path=MzY4NDIsMjM4NTE). 
-
-(Citation Points: kind of 1, kind of 3, so **2**)
+`ScrollArtV1Pattern.java` is a program that prints a hashtag-snake going down the terminal. 
+It creates a pattern that looks like a snake just moving around left and right. It's fully self-designed, so all credit goes to me :)
 
 
 ## 2. Text-moji Art 
 
 My text-moji art is in `ScrollArtV1.java`.
-I was inspired by the bunny textmoji from a Google search of "bunny ascii emoticon" (credit: belongs to the internet it seems like): 
-![](https://ih1.redbubble.net/image.2920171915.3297/raf,360x360,075,t,fafafa:ca443f4786.jpg)
-
-It was only 8x3 so I added a rocket detailing to it. 
-(Citation Points: kind of 1, kind of 3, so **2**)
-
-I decided to make a 8x6 carrot after I made this bunny rocket. Here is the carrot: 
-```
-     \)/
-    --v 
-   /r )
-  >r./
- / '  
-c_/   if
-```
+I wasn't sure what to do for a while, so I just looked up random ascii art until a boat came to mind. I saw some pretty cool while also doable boats, and I decided to make that my project. The site I found them on doesn't let me credit the authors (as no authors are listed), but I took heavy inspiration from 2 boats under this archive: https://www.asciiart.eu/vehicles/boats
 
 #### Process 
-This carrot came from my head. I wrote out the carrot on an index card first. On the right is the carrot, and then I made a grid to fit it. 
-![](carrot-drawing.jpeg)
+The boat was very similar to one that I found on the archive, with a few slight changes that I thought would look better. The water and birds (*s) in the sky were personal additions that I thought would give more life to the scene. 
 
 Then I input each individual character into its 2D location into Image.java, in the `getImage()` function. 
-
-(Citation Points: 1)

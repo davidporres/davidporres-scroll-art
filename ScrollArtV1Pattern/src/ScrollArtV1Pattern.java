@@ -3,71 +3,31 @@ import java.util.Random;
 public class ScrollArtV1Pattern {
     static final int WIDTH = getTerminalWidth() - 1;
     static final Random rand = new Random();
-    // Makes NUM_PATTERNS patterns of straight lines moving either left or right 
-    // Adds a new line at random times that branches off an existing line
-    static final int NUM_PATTERNS = 6;
-    static Integer[] xCols = new Integer[NUM_PATTERNS];
-    static int[] dirs = new int[NUM_PATTERNS]; // 1 for going right or -1 for going left
-    static final String[] LIST_SYMBOLS = new String[]{"*", "x", "o", "@", "#"};
-    static String[] symbols = new String[NUM_PATTERNS]; // could be different symbols
-
-
+   
     public static void main(String[] args) throws InterruptedException {
 
-        xCols[0] = 0; // start first pattern at left edge
-        dirs[0] = 1; // start moving right
-        symbols[0] = "*"; // default symbol
-        for (int i = 1; i < NUM_PATTERNS; i++) {
-            xCols[i] = null;
-        }
-        int timeSinceLast = 0;
+        int x = WIDTH / 2;   //start inthe middle
 
         while (true) {
-            timeSinceLast++;
-            // maybe add a new pattern
-            if (rand.nextDouble() < .1 * timeSinceLast) { // probability increases with time
-                // find any null spot
-                int i = getNullIndex(xCols);
-                if (i != -1) {
-                    startPattern(i);
-                    timeSinceLast = 0;
-                }
+            // build one row
+            for (int i = 0; i < WIDTH; i++) {
+                if (i == x) System.out.print("#");
+                else System.out.print(" ");
             }
+            System.out.println();
 
-            // move existing patterns
-            movePatterns();
-            // map the patterns to characters
-            printRow();
-            Thread.sleep(20); // Delay in ms
+            // delay so you can see it
+            Thread.sleep(60);
+
+            // either left, right, or stay
+            double r = Math.random();
+            if (r < 0.33333 && x > 0) x--;
+            else if (r > 0.66666 && x < WIDTH - 1) x++;
         }
+    
     }
 
-    public static void movePatterns() {
-        for (int i = 0; i < NUM_PATTERNS; i++) {
-            if (xCols[i] != null) {
-                // move the pattern
-                xCols[i] += dirs[i];
-                // check for edge
-                if (xCols[i] <= 0 || xCols[i] >= WIDTH) {
-                    xCols[i] = null; // remove the pattern
-                }
-            }
-        }
-    }
 
-    public static void printRow() {
-        // map the patterns to characters
-        String[] row = new String[WIDTH];
-        for (int i = 0; i < WIDTH; i++) {
-            row[i] = " ";
-        }
-        for (int i = 0; i < NUM_PATTERNS; i++) {
-            if (xCols[i] != null) {
-                row[xCols[i]] = symbols[i];
-            }
-        }
-        System.out.println(String.join("", row));
-    }
 
     public static int getNullIndex(Integer[] arr) {
         for (int i = 0; i < arr.length; i++) {
@@ -78,14 +38,6 @@ public class ScrollArtV1Pattern {
         return -1; // no null found
     }
 
-    public static void startPattern(int i) {
-        int pattern = rand.nextInt(NUM_PATTERNS); // pick a random pattern to branch off
-        if (xCols[pattern] != null) {
-            xCols[i] = xCols[pattern];
-            dirs[i] = dirs[pattern] * -1; // opposite direction
-            symbols[i] = LIST_SYMBOLS[rand.nextInt(LIST_SYMBOLS.length)]; // random symbol
-        }
-    }
 
     public static int getTerminalWidth() {
         String os = System.getProperty("os.name").toLowerCase();
